@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+    nginx-proxy:
+        ports:
+            - '80:80'
+        container_name: nginx-proxy
+        volumes:
+            - "/etc/nginx/vhost.d"
+            - "/usr/share/nginx/html"
+            - "/var/run/docker.sock:/tmp/docker.sock:ro"
+            # - "./vhosts/possi70.local:/etc/nginx/vhost.d/possi70.local"
+            # - "./vhosts/possi72.local:/etc/nginx/vhost.d/possi72.local"
+        image: jwilder/nginx-proxy
+        
