@@ -82,8 +82,9 @@ kubectl apply -f <output file>
 More info regarding [Kompsose](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)
 
 *Files in root are example of Kubernetes files converted from Docker files*
-/Dockerfile --> To create image used by **docker-compose**
-/docker-compose.yml --> **php-deployment.yaml , php-service.yaml**
+
+/Dockerfile --> To create image used by **docker-compose**  
+/docker-compose.yml --> **php-deployment.yaml , php-service.yaml**  
 
 
 
