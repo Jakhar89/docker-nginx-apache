@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: possi
+    ports:
+      - "3308:3306"
+    container_name: mysql-app  
+    network_mode: ngix_default
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7
+    depends_on:
+      - mysql
+    ports:
+      - "30002:80"
+    environment:
+      - PMA_HOST=mysql-app
+      - PMA_PORT= 3306
+    volumes:
+      - /sessions
+    container_name: phpmyadmin-app  
+    network_mode: ngix_default

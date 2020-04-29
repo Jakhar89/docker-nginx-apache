@@ -12,4 +12,4 @@ RUN a2enmod rewrite
 #RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 #CMD apachectl -DFOREGROUND
 
-#COPY www/ /var/www/html/.
+COPY www/ /var/www/html/.

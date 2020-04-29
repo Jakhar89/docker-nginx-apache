@@ -1,4 +1,4 @@
-# docker-nginx-apache
+# Docker-Nginx-Apache-MySql
 docker with nginx reverse proxy to get multiple containers (Apache) exposed on host machine PORT 80
 
 ## ABOUT APP
@@ -9,22 +9,81 @@ docker with nginx reverse proxy to get multiple containers (Apache) exposed on h
 
 ## PRE-REQUISITES
 **DOCKER installed on machine**
-**Need a compatible in a www folder besides root folder /or at the same level of the repo folder**  
+**Need a compatible in a www folder inside root folder**  
 ------- user/docker  
-------- user/www  
-**Each  ##docker-compose.yml file ##Virtual-Host name should be added to the machine hosts file  
--------- sudo nano /etc/hosts    ----- Command for Mac
+------- docker/www 
+**Each  *docker-compose.yml* file ##Virtual-Host name should be added to the machine hosts file  
+```bash
+sudo nano /etc/hosts    
+```
+----- Command for Mac
 
 # Commands
 **-----from within the folder of Dockerfile ---- to build up the image and run container -----**  
-Run below at root level inside repo, /ngix, and /possiupgrade  
-*docker-compose up --build*
+Run below at root level inside repo, /ngix,/possinow  and /possiupgrade  
+```bash
+docker build . -t <name of image>
+docker-compose up
+```
+*Mysql Server*
+```bash
+docker-compose up
+```
+--- as it pulls image from cloud
 
 ## Check  
-**docker network ls** ------- ##ngix_default *should be there ofr nginx proxy to resolve the name/ip:port to provide container*  
+```bash
+docker network ls
+```
+------- ##ngix_default *should be there ofr nginx proxy to resolve the name/ip:port to provide container*  
 
 ## General Commands  
-*docker images* --- Provide all images  
-*docker container ls* --- all live containers  
-*docker container ls -a* ---- all containers live or stopped/exited  
+```bash
+docker images* --- Provide all images  
+docker container ls* --- all live containers  
+docker container ls -a* ---- all containers live or stopped/exited  
+```
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Kubernetes
+
+## PRE-REQUISITES
+**Kubernetes installed on machine**
+
+Convert **docker-compose.yml** to Kubernetes deployment and Service files
+
+## Install Kompose
+```bash
+# Linux
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.21.0/kompose-linux-amd64 -o kompose
+
+# macOS
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.21.0/kompose-darwin-amd64 -o kompose
+
+# Windows
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.21.0/kompose-windows-amd64.exe -o kompose.exe
+
+chmod +x kompose
+sudo mv ./kompose /usr/local/bin/kompose
+```
+
+## Convert
+*Go to folder where **docker-compose.yml** is placed.*
+```bash
+kompose convert
+```
+*To deploy APP and Configure services related to the app*
+``bash
+kubectl apply -f <output file>
+```
+
+More info regarding [Kompsose] (https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)
+
+*Files in root are example of Kubernetes files converted from Docker files*
+/Dockerfile --> To create image used by *docker-compose*
+/docker-compose.yml --> php-deployment.yaml , php-service.yaml
+
+
+
+
 

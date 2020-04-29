@@ -3,12 +3,12 @@ services:
   php:
     # build: 
     #   context: .
-    image: possi72
+    image: possimg
     # networks:
     #   - frontend
     #   - backend
     environment:
-      - VIRTUAL_HOST=possi72.local
+      - VIRTUAL_HOST=possi70.local
       - VIRTUAL_PORT=80
       - MYSQL_HOST=mysql-app
     # environment:
@@ -18,8 +18,11 @@ services:
     #   - MYSQL_DB=moe_db
     volumes:
       - ../www/:/var/www/html:z
-     
+    # extra_hosts: 
+    #     - "possi72.local:127.0.0.1"
+    # hostname:  possi72.local
+    # domainname: local     
     ports:
-      - "9090:80"
-    container_name: possiupgrade
+      - "8090:80"
+    container_name: possi70
     network_mode: ngix_default
