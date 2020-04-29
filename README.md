@@ -39,9 +39,9 @@ docker network ls
 
 ## General Commands  
 ```bash
-docker images* --- Provide all images  
-docker container ls* --- all live containers  
-docker container ls -a* ---- all containers live or stopped/exited  
+docker images --- Provide all images  
+docker container ls --- all live containers  
+docker container ls -a ---- all containers live or stopped/exited  
 ```
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
