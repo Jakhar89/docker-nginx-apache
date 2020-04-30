@@ -47,6 +47,18 @@ docker container ls -a ---- all containers live or stopped/exited
 
 # Kubernetes
 
+## Useful Links and Commands
+*Ingress Nginx controller* more info on [setup](https://kubernetes.github.io/ingress-nginx/deploy/) for other than Docker for Mac
+
+*[Web](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) UI for kubernetes*
+
+``bash 
+#Install Nginx Ingress controller on Docker for Mac app
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.31.1/deploy/static/provider/cloud/deploy.yaml
+
+kubectl get pods -n kube-system #check if ingress controller is running nginx
+``
+
 ## PRE-REQUISITES
 **Kubernetes installed on machine**
 

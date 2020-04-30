@@ -1,0 +1,47 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   annotations:
+#     kompose.cmd: kompose convert
+#     kompose.version: 1.21.0 (992df58d8)
+#   creationTimestamp: null
+#   labels:
+#     io.kompose.service: php
+#   name: php
+# spec:
+#   ports:
+#   - name: "8090"
+#     port: 8090
+#     targetPort: 80
+#   selector:
+#     io.kompose.service: php
+# status:
+#   loadBalancer: {}
+
+# ---
+  kind: Service
+  apiVersion: v1
+  metadata:
+    name: mmnode
+    namespace: default
+    selfLink: 
+    uid: 
+    resourceVersion: 
+    creationTimestamp: 
+    labels:
+      io.kompose.service: php
+  spec:
+    ports:
+      - name: mmn
+        protocol: TCP
+        port: 80
+        targetPort: 80
+    selector:
+      io.kompose.service: php
+    clusterIP: 
+    type: NodePort
+    sessionAffinity: None 
+    externalTrafficPolicy: Cluster
+  status:
+    loadBalancer:    
+  

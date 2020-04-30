@@ -1,0 +1,44 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: php70-expose
+  namespace: default
+  selfLink: 
+  uid: 
+  resourceVersion: 
+  creationTimestamp: 
+  labels:
+    io.kompose.service: php70
+spec:
+  ports:
+    - name: ph70
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    io.kompose.service: php70
+  clusterIP: 
+  type: NodePort
+  sessionAffinity: None 
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer:  
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   annotations:
+#     kompose.cmd: kompose convert
+#     kompose.version: 1.21.0 (992df58d8)
+#   creationTimestamp: null
+#   labels:
+#     io.kompose.service: php
+#   name: php
+# spec:
+#   ports:
+#   - name: "8090"
+#     port: 8090
+#     targetPort: 80
+#   selector:
+#     io.kompose.service: php
+# status:
+#   loadBalancer: {}

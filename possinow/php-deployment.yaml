@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: php70
+  name: php70
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: php70
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: php70
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_HOST
+          value: mysql-app
+        - name: VIRTUAL_HOST
+          value: possi70.local
+        - name: VIRTUAL_PORT
+          value: "80"
+        image: possimg
+        imagePullPolicy: "IfNotPresent"
+        name: possi70
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: php-claim0
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+        - name: php-claim0
+          hostPath:
+            # directory location on host -- shared in Docker for Mac
+            path: /Users/jack/project/htdocs/docker/www
+status: {}
