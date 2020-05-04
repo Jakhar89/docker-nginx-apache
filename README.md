@@ -6,6 +6,9 @@ docker with nginx reverse proxy to get multiple containers (Apache) exposed on h
 - Root Docker image named possimg runs on Apache and PHP 7.0.33, and mounts the /www folder to the root
 - /possiupgrade Dockerfile image name possi72 fire up Apache and PHP 7.2, and mounts the same folder
 - /ngix docker-compose runs a ngix-proxy server to cater the need of both apps to be exposed on port 80 of host machine.
+*If database is Container/Kubernetes* - use **Container/Deployment Name as db host**
+*If database is outside Docker/Kubernetes* - use **host.docker.internal as db host**
+
 
 ## PRE-REQUISITES
 **DOCKER installed on machine**

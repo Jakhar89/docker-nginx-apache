@@ -1,8 +1,8 @@
 version: "3.2"
 services:
   php:
-    # build: 
-    #   context: .
+    build: 
+       context: .
     image: possimg
     # networks:
     #   - frontend
@@ -17,7 +17,7 @@ services:
     #   - MYSQL_PASSWORD=moepass
     #   - MYSQL_DB=moe_db
     volumes:
-      - ../www/:/var/www/html:z
+      - ../possi/:/var/www/html:z
     # extra_hosts: 
     #     - "possi72.local:127.0.0.1"
     # hostname:  possi72.local

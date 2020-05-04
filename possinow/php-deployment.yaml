@@ -47,5 +47,5 @@ spec:
         - name: php-claim0
           hostPath:
             # directory location on host -- shared in Docker for Mac
-            path: /Users/jack/project/htdocs/docker/www
+            path: /Users/jack/project/htdocs/docker/possi
 status: {}

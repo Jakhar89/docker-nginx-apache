@@ -36,13 +36,7 @@ spec:
         ports:
         - containerPort: 80
         resources: {}
-        volumeMounts:
-        - mountPath: /sessions
-          name: phpmyadmin-claim0
       restartPolicy: Always
       serviceAccountName: ""
-      volumes:
-      - name: phpmyadmin-claim0
-        persistentVolumeClaim:
-          claimName: phpmyadmin-claim0
+      volumes: null
 status: {}
