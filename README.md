@@ -13,7 +13,8 @@ docker with nginx reverse proxy to get multiple containers (Apache) exposed on h
 ## PRE-REQUISITES
 **DOCKER installed on machine**
 - [docker_desktop](https://www.docker.com/products/docker-desktop)
-**Need a compatible in a www folder inside root folder**  
+
+**Folder structure should be as below**  
 ------- user/docker  
 ------- docker/possi(all project files inside this folder)
 ------- docker/mysql/docker-compose
