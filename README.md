@@ -3,29 +3,40 @@ docker with nginx reverse proxy to get multiple containers (Apache) exposed on h
 
 ## ABOUT APP
 - This is written particularly to cater running of mutiple instances of same Codeigniter2.x based app
-- Root Docker image named possimg runs on Apache and PHP 7.0.33, and mounts the /www folder to the root
+- Root Docker image named possimg runs on Apache and PHP 7.0.33, and mounts the /possi folder to the root
 - /possiupgrade Dockerfile image name possi72 fire up Apache and PHP 7.2, and mounts the same folder
 - /ngix docker-compose runs a ngix-proxy server to cater the need of both apps to be exposed on port 80 of host machine.
-*If database is Container/Kubernetes* - use **Container/Deployment Name as db host**
+*If database is Container/Kubernetes* - use **Container/Deployment Name, mysql-app in our case as db host**
 *If database is outside Docker/Kubernetes* - use **host.docker.internal as db host**
 
 
 ## PRE-REQUISITES
 **DOCKER installed on machine**
+- [docker_desktop](https://www.docker.com/products/docker-desktop)
 **Need a compatible in a www folder inside root folder**  
 ------- user/docker  
-------- docker/www 
+------- docker/possi(all project files inside this folder)
+------- docker/mysql/docker-compose
+------- docker/possinow/docker-compose
+------- docker/ngix/docker-compose
 **Each  *docker-compose.yml* file ##Virtual-Host name should be added to the machine hosts file  
 ```bash
 sudo nano /etc/hosts    
 ```
 ----- Command for Mac
+For Windows
+--> Open Notepad in Admin mode
+--> open file C:\Windows\System32\drivers\etc\hosts
+--> add new hosts, save
 
 # Commands
 **-----from within the folder of Dockerfile ---- to build up the image and run container -----**  
-Run below at root level inside repo, /ngix,/possinow  and /possiupgrade  
+Step 1 -> Run below at root level inside docker /ngix,/possinow  
 ```bash
 docker build . -t <name of image>
+```
+or
+```bash
 docker-compose up
 ```
 *Mysql Server*
@@ -46,8 +57,22 @@ docker images --- Provide all images
 docker container ls --- all live containers  
 docker container ls -a ---- all containers live or stopped/exited  
 ```
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+*Please change database file for connection*
+--> hostname = mysql-app
+--> pass = root
+--> user = root
+--> database =  possi
+
+## Important
+PhpMyAdmin @ localhost:30002 *add/import local database zip to desired database*
+localhost:8090 *to run application if not added in hosts file*
+possi70.local *need to be added to the hosts file, for proper loading* 
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+**No need to follow below if only docker setup**
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Kubernetes
 
 ## Useful Links and Commands
