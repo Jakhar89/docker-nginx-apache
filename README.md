@@ -67,8 +67,8 @@ docker container ls -a ---- all containers live or stopped/exited
 
 ## Important
 **If you don't want to follow the lengthy process to setup, use possiInstaller_docker.sh**
-PhpMyAdmin @ localhost:30002 *add/import local database zip to desired database*
-localhost:8090 *to run application if not added in hosts file*
+- PhpMyAdmin @ localhost:30002 *add/import local database zip to desired database*
+- localhost:8090 *to run application if not added in hosts file*
 possi70.local *need to be added to the hosts file, for proper loading* 
 
 
