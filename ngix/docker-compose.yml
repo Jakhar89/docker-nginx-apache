@@ -5,6 +5,8 @@ services:
             - '80:80'
         container_name: nginx-proxy
         volumes:
+
+        
             - "/etc/nginx/vhost.d"
             - "/usr/share/nginx/html"
             - "/var/run/docker.sock:/tmp/docker.sock:ro"
