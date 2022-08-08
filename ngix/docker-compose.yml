@@ -8,7 +8,14 @@ services:
             - "/etc/nginx/vhost.d"
             - "/usr/share/nginx/html"
             - "/var/run/docker.sock:/tmp/docker.sock:ro"
-            # - "./vhosts/possi70.local:/etc/nginx/vhost.d/possi70.local"
-            # - "./vhosts/possi72.local:/etc/nginx/vhost.d/possi72.local"
-        image: jwilder/nginx-proxy
+            - ./proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+            #- "./vhosts/possi70.local:/etc/nginx/vhost.d/possi70.local"
+            #- "./vhosts/possi72.local:/etc/nginx/vhost.d/possi72.local"
+        image: jwilder/nginx-proxy:0.9.1
+        restart: always
+    whoami:
+        image: jwilder/whoami
+        environment:
+            - VIRTUAL_HOST=whoami.local
+
         

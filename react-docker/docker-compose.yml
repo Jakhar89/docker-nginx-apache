@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: client
+    container_name: client
+    # expose:
+    #   - "3006"
+    ports:
+      - "3006:3006"  
+    volumes:
+      - ./:/home/node/app:z
+      - /home/node/app/node_modules 
+    network_mode: ngix_default
+    command: npm run client

@@ -1,0 +1,15 @@
+#htaccess for public_html>possi>admin>.htaccess
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond $1 !^(index\.php|resources|robots\.txt)
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+ 	RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+	RewriteCond %{HTTPS} on
+	RewriteRule ^possi/(.*)$ /index.php/$1 [L,R=301,QSA]
+# 	RewriteCond %{HTTP_HOST} ^possi\.(.*)
+# 	RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+<IfModule mod_headers.c>
+	Header set X-Content-Type-Options nosniff
+</IfModule>
