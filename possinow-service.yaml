@@ -49,7 +49,7 @@ loadBalancer:
    
 ---
 #Ingress  
-apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1
+apiVersion: networking.k8s.io/v1 # for versions before 1.14 use extensions/v1beta1
 kind: Ingress
 metadata:
   name: example-ingress
@@ -61,6 +61,9 @@ spec:
     http:
       paths:
         - path: /
+          pathType: Prefix
           backend:
-            serviceName: php70-expose
-            servicePort: ph70 
+            service:
+              name: test
+              port:
+                number: 70
